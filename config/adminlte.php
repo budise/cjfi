@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Admin</b>CJFI',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -320,14 +320,40 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
+        // [
+        //     'text' => 'pages',
+        //     'url' => 'admin/pages',
+        //     'icon' => 'far fa-fw fa-file',
+        //     'label' => 4,
+        //     'label_color' => 'success',
+        // ],
+        ['header' => 'MASTER'],
         [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+            'text' => 'Assets',
+            'url'  => 'assets',
+            'icon' => 'fas fa-boxes',
+            // 'can'  => 'view-assets', // opsional untuk hak akses
         ],
-        ['header' => 'account_settings'],
+        [
+            'text' => 'Karyawan',
+            'url'  => 'karyawans',
+            'icon' => 'fas fa-users',
+        ],
+        ['header' => 'TRANSAKSI'],
+        [
+            'text' => 'Peminjaman  Asset',
+            'url'  => 'karyawan-asset',
+            'icon' => 'fas fa-hand-holding-heart',
+            // 'can'  => 'view-assets', // opsional untuk hak akses
+        ],
+        [
+            'text' => 'Pengembalian Asset',
+            'url'  => 'assets',
+            'icon' => 'fas fa-hand-sparkles',
+            // 'can'  => 'view-assets', // opsional untuk hak akses
+        ],
+
+        ['header' => 'USER'],
         [
             'text' => 'profile',
             'url' => 'admin/settings',
@@ -338,60 +364,68 @@ return [
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        ['header' => 'LAPORAN'],
         [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-            ],
+            'text' => 'Laporan Karyawan',
+            'url'  => 'laporan/karyawan',
+            'icon' => 'fas fa-file-alt',
         ],
-        ['header' => 'labels'],
-        [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
-        ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
-        ],
+
+
+        // [
+        //     'text' => 'multilevel',
+        //     'icon' => 'fas fa-fw fa-share',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'level_one',
+        //             'url' => '#',
+        //         ],
+        //         [
+        //             'text' => 'level_one',
+        //             'url' => '#',
+        //             'submenu' => [
+        //                 [
+        //                     'text' => 'level_two',
+        //                     'url' => '#',
+        //                 ],
+        //                 [
+        //                     'text' => 'level_two',
+        //                     'url' => '#',
+        //                     'submenu' => [
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url' => '#',
+        //                         ],
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url' => '#',
+        //                         ],
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+        //         [
+        //             'text' => 'level_one',
+        //             'url' => '#',
+        //         ],
+        //     ],
+        // ],
+        // ['header' => 'labels'],
+        // [
+        //     'text' => 'important',
+        //     'icon_color' => 'red',
+        //     'url' => '#',
+        // ],
+        // [
+        //     'text' => 'warning',
+        //     'icon_color' => 'yellow',
+        //     'url' => '#',
+        // ],
+        // [
+        //     'text' => 'information',
+        //     'icon_color' => 'cyan',
+        //     'url' => '#',
+        // ],
     ],
 
     /*
