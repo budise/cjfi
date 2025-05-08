@@ -9,6 +9,9 @@ class DetailAsset extends Model
 {
     use HasFactory;
 
+    const STATUS_GUDANG = 1;
+    const STATUS_DIPINJAM = 2;
+
     protected $fillable = [
         'asset_id',
         'kode_asset',

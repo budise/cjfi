@@ -33,4 +33,16 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('karyawans', KaryawanController::class);
 Route::get('/laporan/karyawan', [App\Http\Controllers\KaryawanController::class, 'laporan'])->name('karyawan.laporan');
 Route::get('/laporan/karyawan/pdf', [App\Http\Controllers\KaryawanController::class, 'exportPdf'])->name('laporan.karyawan.pdf');
-Route::resource('karyawan-asset', KaryawanAssetController::class);
+
+// Route::resource('karyawan-asset', KaryawanAssetController::class);
+Route::resource('karyawan-asset', KaryawanAssetController::class)->names([
+    'index' => 'karyawan_asset.index',
+    'create' => 'karyawan_asset.create',
+    'store' => 'karyawan_asset.store',
+    'edit' => 'karyawan_asset.edit',
+    'update' => 'karyawan_asset.update',
+    'destroy' => 'karyawan_asset.destroy',
+    'show' => 'karyawan_asset.show',
+]);
+
+Route::resource('pengembalian-asset', \App\Http\Controllers\PengembalianAssetController::class);

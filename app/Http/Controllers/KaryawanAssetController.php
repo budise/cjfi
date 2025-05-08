@@ -18,7 +18,7 @@ class KaryawanAssetController extends Controller
     public function create()
     {
         $karyawans = Karyawan::all();
-        $detailAssets = DetailAsset::all();
+        $detailAssets = DetailAsset::where('status', '1')->get(); // hanya yang tersedia
         return view('karyawan_asset.create', compact('karyawans', 'detailAssets'));
     }
 
@@ -30,7 +30,18 @@ class KaryawanAssetController extends Controller
             'tanggal_pinjam' => 'required|date',
         ]);
 
-        KaryawanDetailAsset::create($request->all());
+        // status peminjaman = 1 (dipinjam)
+        $request->merge(['status' => 1]);
+
+        $peminjaman = KaryawanDetailAsset::create($request->all());
+
+        // Update status detail asset menjadi 'Dipinjam' (2)
+        $detailAsset = DetailAsset::find($request->detail_asset_id);
+        if ($detailAsset) {
+            $detailAsset->status = 2;
+            $detailAsset->save();
+        }
+
         return redirect()->route('karyawan_asset.index')->with('success', 'Data peminjaman ditambahkan');
     }
 
@@ -55,6 +66,13 @@ class KaryawanAssetController extends Controller
 
     public function destroy(KaryawanDetailAsset $karyawanAsset)
     {
+        // Kembalikan status detail asset ke 'Di Gudang' (1)
+        $detailAsset = DetailAsset::find($karyawanAsset->detail_asset_id);
+        if ($detailAsset) {
+            $detailAsset->status = 1;
+            $detailAsset->save();
+        }
+
         $karyawanAsset->delete();
         return redirect()->route('karyawan_asset.index')->with('success', 'Data peminjaman dihapus');
     }

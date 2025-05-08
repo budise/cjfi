@@ -17,6 +17,7 @@ class KaryawanDetailAsset extends Model
         'tanggal_pinjam',
         'tanggal_kembali',
         'keterangan',
+        'status',
     ];
 
     public function karyawan()

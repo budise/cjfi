@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <form action="{{ route('karyawan-asset.store') }}" method="POST">
+    <form action="{{ route('karyawan_asset.store') }}" method="POST">
         @csrf
         <div class="card">
             <div class="card-body">
@@ -49,7 +49,7 @@
 
             </div>
             <div class="card-footer">
-                <a href="{{ route('karyawan-asset.index') }}" class="btn btn-secondary">Kembali</a>
+                <a href="{{ route('karyawan_asset.index') }}" class="btn btn-secondary">Kembali</a>
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
         </div>

@@ -344,14 +344,13 @@ return [
             'text' => 'Peminjaman  Asset',
             'url'  => 'karyawan-asset',
             'icon' => 'fas fa-hand-holding-heart',
-            // 'can'  => 'view-assets', // opsional untuk hak akses
         ],
         [
             'text' => 'Pengembalian Asset',
-            'url'  => 'assets',
+            'url'  => 'pengembalian-asset',
             'icon' => 'fas fa-hand-sparkles',
-            // 'can'  => 'view-assets', // opsional untuk hak akses
         ],
+
 
         ['header' => 'USER'],
         [

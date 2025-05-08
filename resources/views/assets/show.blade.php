@@ -32,6 +32,7 @@
                             <th>Kode Asset</th>
                             <th>Lokasi</th>
                             <th>Tanggal Perolehan</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -41,6 +42,16 @@
                                 <td>{{ $detail->kode_asset }}</td>
                                 <td>{{ $detail->lokasi }}</td>
                                 <td>{{ $detail->tanggal_perolehan }}</td>
+                                <td>
+                                    @if ($detail->status == 1)
+                                        <span class="badge badge-success">Di Gudang</span>
+                                    @elseif ($detail->status == 2)
+                                        <span class="badge badge-warning">Dipinjam</span>
+                                    @else
+                                        <span class="badge badge-secondary">Tidak Diketahui</span>
+                                    @endif
+                                </td>
+
                                 <td>
                                     <a href="{{ route('detail-assets.edit', $detail->id) }}" class="btn btn-sm btn-warning">
                                         Edit
