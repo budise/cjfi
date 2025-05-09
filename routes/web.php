@@ -48,3 +48,5 @@ Route::resource('karyawan-asset', KaryawanAssetController::class)->names([
 Route::resource('pengembalian-asset', \App\Http\Controllers\PengembalianAssetController::class);
 Route::get('/laporan/peminjaman', [KaryawanAssetController::class, 'laporan'])->name('laporan.peminjaman');
 Route::get('/laporan/peminjaman/pdf', [KaryawanAssetController::class, 'exportPdf'])->name('laporan.peminjaman.pdf');
+Route::get('/laporan/asset', [AssetController::class, 'laporan'])->name('laporan.asset');
+Route::get('/laporan/asset/pdf', [AssetController::class, 'exportPdf'])->name('laporan.asset.pdf');

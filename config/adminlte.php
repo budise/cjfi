@@ -374,6 +374,11 @@ return [
             'url'  => 'laporan/peminjaman',
             'icon' => 'fas fa-file-alt',
         ],
+        [
+            'text'    => 'Laporan Asset',
+            'icon'    => 'fas fa-file-alt',
+            'url'     => 'laporan/asset',
+        ],
 
 
         // [
