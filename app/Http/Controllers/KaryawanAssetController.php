@@ -6,6 +6,7 @@ use App\Models\Karyawan;
 use App\Models\DetailAsset;
 use App\Models\KaryawanDetailAsset;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class KaryawanAssetController extends Controller
 {
@@ -75,5 +76,57 @@ class KaryawanAssetController extends Controller
 
         $karyawanAsset->delete();
         return redirect()->route('karyawan_asset.index')->with('success', 'Data peminjaman dihapus');
+    }
+
+    public function laporan(Request $request)
+    {
+        $karyawans = Karyawan::all();
+        $query = KaryawanDetailAsset::with(['karyawan', 'detailAsset.asset']);
+
+        if ($request->karyawan_id) {
+            $query->where('karyawan_id', $request->karyawan_id);
+        }
+
+        if ($request->unit_kerja) {
+            $query->whereHas('karyawan', function ($q) use ($request) {
+                $q->where('unit_kerja', 'like', '%' . $request->unit_kerja . '%');
+            });
+        }
+
+        if ($request->status) {
+            $query->where('status', $request->status);
+        }
+
+        $data = $query->get();
+
+        return view('karyawan_asset.laporan', [
+            'data' => $data,
+            'karyawans' => $karyawans,
+            'filters' => $request->only('karyawan_id', 'unit_kerja', 'status'),
+        ]);
+    }
+
+    public function exportPdf(Request $request)
+    {
+        $query = KaryawanDetailAsset::with(['karyawan', 'detailAsset.asset']);
+
+        if ($request->karyawan_id) {
+            $query->where('karyawan_id', $request->karyawan_id);
+        }
+
+        if ($request->unit_kerja) {
+            $query->whereHas('karyawan', function ($q) use ($request) {
+                $q->where('unit_kerja', $request->unit_kerja);
+            });
+        }
+
+        if ($request->status) {
+            $query->where('status', $request->status);
+        }
+
+        $data = $query->get();
+
+        $pdf = Pdf::loadView('karyawan_asset.laporan_pdf', compact('data'));
+        return $pdf->stream('laporan_peminjaman.pdf');
     }
 }

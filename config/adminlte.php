@@ -300,11 +300,11 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type' => 'navbar-search',
+        //     'text' => 'search',
+        //     'topnav_right' => true,
+        // ],
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
@@ -367,6 +367,11 @@ return [
         [
             'text' => 'Laporan Karyawan',
             'url'  => 'laporan/karyawan',
+            'icon' => 'fas fa-file-alt',
+        ],
+        [
+            'text' => 'Laporan Peminjaman',
+            'url'  => 'laporan/peminjaman',
             'icon' => 'fas fa-file-alt',
         ],
 
