@@ -90,7 +90,7 @@ class AssetController extends Controller
         // Query yang sama dengan laporan biasa
         $query = DetailAsset::with('asset')
             ->join('assets', 'assets.id', '=', 'detail_assets.asset_id')
-            ->select('detail_assets.*', 'assets.nama_asset', 'detail_assets.kode_asset');
+            ->select('detail_assets.*', 'assets.nama_asset', 'assets.deskripsi');
 
         // Filter berdasarkan periode tanggal perolehan
         if ($request->has('tanggal_awal') && $request->has('tanggal_akhir')) {
